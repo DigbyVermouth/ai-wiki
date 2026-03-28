@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: Proven Case Study — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <div id="sidebar-mount"></div>
+  <main class="main">
+
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="lab-overview.html">Lab</a><span>›</span>Proven Case Study</div>
+      <span class="page-tag">Lab · Proven Product</span>
+      <h1 class="page-title">The missed call<br><em>gold mine.</em></h1>
+      <p class="page-subtitle">This is one of the most successfully marketed AI products for small businesses right now. We're going to dissect it completely — the problem, the architecture, the business model, and the real numbers.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">What you're learning</span>
+      By the end of this page you'll understand: the customer problem, the AI architecture that solves it, the real ROI numbers, the existing players, and what you could do differently. This is the lab equivalent of dissecting a working engine.
+    </div>
+
+    <h2>The Problem: The $50,000 hole in every contractor's business</h2>
+
+    <p>Picture a plumber. He's under a sink at 2pm, hands full of pipe fittings, and his phone rings. He can't answer. The caller gets voicemail. <strong>85% of callers who reach voicemail don't leave a message.</strong> They hang up and call the next plumber on Google.</p>
+
+    <p>Now multiply that:</p>
+
+    <div class="roi-grid">
+      <div class="roi-card">
+        <span class="roi-number">27%</span>
+        <span class="roi-label">of incoming calls go unanswered at the average home service business</span>
+      </div>
+      <div class="roi-card">
+        <span class="roi-number">$1,200</span>
+        <span class="roi-label">average value of a missed plumbing call (emergency jobs command 1.5–2× rates)</span>
+      </div>
+      <div class="roi-card">
+        <span class="roi-number">$50K+</span>
+        <span class="roi-label">estimated annual revenue lost by average plumbing business to missed calls</span>
+      </div>
+    </div>
+
+    <p>The brutal math: a plumber spending $500/month on Google Ads to generate calls — and missing 27% of them — is throwing away $135/month in marketing spend on top of the lost jobs. The problem sells itself.</p>
+
+    <p>And it's not just plumbers. HVAC, electricians, landscapers, roofers, salon owners, lawyers, dentists — any local business where the owner is doing the work and can't always answer the phone has this exact problem.</p>
+
+    <h2>The Solution: Missed Call Text-Back + AI Qualification</h2>
+
+    <p>The core product is simple enough to explain in one sentence: <strong>when a call is missed, the system automatically texts the caller back within 30–60 seconds and starts a qualifying conversation via SMS.</strong></p>
+
+    <p>Here's what actually happens step by step:</p>
+
+    <div class="step-row">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title">Call is missed</div>
+        <p style="font-size: 14px; color: var(--muted);">The business owner's phone rings while he's on a job. He can't answer. Normally, this is a dead lead. With the system, it triggers an automation.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <div class="step-title">Instant text-back (30–60 seconds)</div>
+        <p style="font-size: 14px; color: var(--muted);">The caller's number receives an automatic SMS: <em>"Hi! This is Thompson Plumbing — sorry we missed you. We're on a job right now. What can we help you with?"</em> Branded, human-sounding, immediate. The caller is still on their phone.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <div class="step-title">AI qualification via SMS</div>
+        <p style="font-size: 14px; color: var(--muted);">The caller responds. The AI (trained on the business's services, service area, and pricing) asks qualifying questions: "Is this an emergency or can it wait? What's the issue? Where are you located?" It handles the conversation naturally, one message at a time.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <div class="step-title">Lead qualification & routing</div>
+        <p style="font-size: 14px; color: var(--muted);">The AI determines: is this a qualified lead in the service area? Is it an emergency that needs immediate routing? It summarizes the conversation and either books an appointment, forwards details to the owner's phone, or pushes into the CRM automatically.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <div class="step-title">Owner reviews qualified lead</div>
+        <p style="font-size: 14px; color: var(--muted);">The owner finishes the job, checks his phone, and sees: "New lead: Sarah M., burst pipe, 123 Oak St (your service area), needs emergency response, contact info captured." He calls back a warm, pre-qualified lead instead of a cold unknown caller.</p>
+      </div>
+    </div>
+
+    <h2>The Architecture (what's actually running)</h2>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 1rem;">What's under the hood</div>
+      <table class="compare-table">
+        <tr>
+          <th>Component</th>
+          <th>What it does</th>
+          <th>Typical tech</th>
+        </tr>
+        <tr>
+          <td><strong>Call detection</strong></td>
+          <td>Detects missed call, triggers workflow</td>
+          <td>Twilio, VoIP forwarding</td>
+        </tr>
+        <tr>
+          <td><strong>SMS dispatch</strong></td>
+          <td>Sends initial text-back within 60s</td>
+          <td>Twilio SMS, 10DLC compliant</td>
+        </tr>
+        <tr>
+          <td><strong>AI conversation</strong></td>
+          <td>Qualifies lead via back-and-forth SMS</td>
+          <td>Claude or GPT-4o via API, system prompt with business context</td>
+        </tr>
+        <tr>
+          <td><strong>CRM integration</strong></td>
+          <td>Pushes qualified lead into job management</td>
+          <td>Jobber, HousecallPro, ServiceTitan (MCP or API)</td>
+        </tr>
+        <tr>
+          <td><strong>Workflow orchestration</strong></td>
+          <td>Connects all the pieces</td>
+          <td>n8n, Make, or custom Node.js</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <span class="callout-label">The AI part is actually small</span>
+      Notice that the LLM is just one step in a larger workflow. The heavy lifting is the call detection, SMS delivery (10DLC compliance is a real operational challenge), and CRM integration. This is true of most real AI products — the AI is the brain, but the plumbing is the work.
+    </div>
+
+    <h2>The Market: Who's already selling this</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>Product</th>
+        <th>Positioning</th>
+        <th>Price</th>
+        <th>Edge</th>
+      </tr>
+      <tr>
+        <td><strong>LeadTruffle</strong></td>
+        <td>AI-first, contractor-specific</td>
+        <td>~$97–297/mo</td>
+        <td>Handles Thumbtack, Angi, Yelp leads too</td>
+      </tr>
+      <tr>
+        <td><strong>Sameday AI</strong></td>
+        <td>Voice AI answering for home services</td>
+        <td>Custom pricing</td>
+        <td>Full voice AI, not just SMS</td>
+      </tr>
+      <tr>
+        <td><strong>Quallaa</strong></td>
+        <td>Word-of-mouth contractor focus</td>
+        <td>$99/mo</td>
+        <td>10-min setup, "certification" model</td>
+      </tr>
+      <tr>
+        <td><strong>Smith.ai</strong></td>
+        <td>AI + human hybrid receptionist</td>
+        <td>$300–1000/mo</td>
+        <td>Human fallback for complex situations</td>
+      </tr>
+      <tr>
+        <td><strong>GoHighLevel</strong></td>
+        <td>Full CRM + missed call text-back</td>
+        <td>$97–297/mo</td>
+        <td>All-in-one marketing platform</td>
+      </tr>
+    </table>
+
+    <h2>The Business Model: Why this works to sell</h2>
+
+    <p>This product has near-perfect product-market fit for a simple reason: <strong>the ROI is obvious and immediate.</strong> You don't have to convince a plumber that missed calls cost him money — he already knows and it already hurts. You're just solving a problem he can already feel.</p>
+
+    <p>The sales pitch writes itself:</p>
+    <div class="card" style="background: rgba(200,255,0,0.05); border-color: rgba(200,255,0,0.2);">
+      <div style="font-style: italic; color: var(--text); font-size: 15px; line-height: 1.7;">"You're missing 27% of your calls. That's probably 5–10 jobs a month at $500–1,200 each. This system texts them back in 30 seconds, qualifies them while you're working, and drops the lead straight into your job board. It costs $99 a month. If it captures one extra job, it paid for itself 5 times over."</div>
+    </div>
+
+    <p>The math at scale: if you sign up 100 contractors at $99/month, that's $9,900/month recurring revenue. At $297/month (higher tier), 100 contractors = $29,700 MRR. The underlying API costs (Twilio + LLM per conversation) are typically $2–8 per month per customer at average volume. Margins are very strong.</p>
+
+    <div class="page-nav">
+      <a href="lab-overview.html">
+        <span class="nav-label">← Previous</span>
+        <span class="nav-title">Lab Overview</span>
+      </a>
+      <a href="lab-build.html">
+        <span class="nav-label">Next →</span>
+        <span class="nav-title">New Angle: Build & Pitch</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+<script src="../assets/sidebar.js"></script>
+<script>renderSidebar('lab-case');</script>
+</body>
+</html>

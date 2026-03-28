@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gotcha Guide — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <div id="sidebar-mount"></div>
+  <main class="main">
+
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Vocabulary</div>
+      <span class="page-tag">Vocabulary · Strategy</span>
+      <h1 class="page-title">The <em>Gotcha</em> Guide.</h1>
+      <p class="page-subtitle">These are the traps that get set in AI meetings. Knowing the better answer is what separates someone who's read about AI from someone who's built with it.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">How to use this</span>
+      Each trap has a "what they're really saying" and a redirect. The goal isn't to embarrass anyone — it's to steer toward better solutions. Frame every redirect as a question, not a correction.
+    </div>
+
+    <h2>Trap 1: "Let's just fine-tune the model"</h2>
+    <p><strong>What they mean:</strong> We need custom training to make the AI work for our specific use case.</p>
+    <p><strong>Why it's usually wrong:</strong> Fine-tuning is expensive, takes weeks, and goes stale the moment your data changes. It's the right call for very specific cases (specialized writing style, narrow domain classification) but wildly overkill for most small business use cases.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't just agree</span>
+        "Yeah, we should fine-tune on our customer data."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "Before we commit to fine-tuning, is the goal behavior change or knowledge access? If it's knowledge — our product catalog, our policies — RAG gets us there in days and updates automatically."
+      </div>
+    </div>
+
+    <p><strong>The rule:</strong> Fine-tuning = teach the model <em>how to behave</em>. RAG = give the model <em>things to know</em>. Most people confuse the two.</p>
+
+    <h2>Trap 2: "We'll use ChatGPT for everything"</h2>
+    <p><strong>What they mean:</strong> OpenAI is the default and we don't need to evaluate alternatives.</p>
+    <p><strong>Why it's limiting:</strong> ChatGPT is great for interactive use. But Claude has a dramatically larger context window (better for long documents), tends to follow complex instructions more reliably, and is often the better choice for automated workflows and document-heavy tasks.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't just agree</span>
+        "Sure, we'll use ChatGPT."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "ChatGPT works well for the interactive pieces. But for the document processing and automated workflows, Claude's context window gives us a real advantage — and we should probably be model-agnostic at the architecture level anyway so we can swap later."
+      </div>
+    </div>
+
+    <h2>Trap 3: "Agents will just handle it automatically"</h2>
+    <p><strong>What they mean:</strong> We deploy an autonomous AI and it figures everything out.</p>
+    <p><strong>Why it's dangerous:</strong> Agents are powerful but not set-it-and-forget-it — especially for customer-facing workflows. A hallucination or wrong decision at step 3 of a 10-step agent cascade can cause real damage before any human notices.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't just agree</span>
+        "Yeah, we'll set up an agent and it'll handle everything."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "Agents are the right direction, but the current best practice is to start with deterministic workflows with AI steps inside them. We keep humans in the loop for anything high-stakes and expand autonomy incrementally as we build trust. What are the failure modes if the agent goes off-path?"
+      </div>
+    </div>
+
+    <h2>Trap 4: "We just need a chatbot"</h2>
+    <p><strong>What they mean:</strong> It's a simple, small project — just build a chatbot and we're done.</p>
+    <p><strong>Why it's the wrong frame:</strong> A chatbot is a UI layer. The hard questions are underneath: What is it grounded in? What happens when it gets a question outside its training? How do we keep the knowledge base current?</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't just agree</span>
+        "Sure, we'll build a chatbot."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "A chatbot interface is straightforward — the real architecture question is what it's grounded in. Without a knowledge base, it'll hallucinate our specific products and policies. What data source is it pulling from, and who maintains it?"
+      </div>
+    </div>
+
+    <h2>Trap 5: "Let's build it with LangChain"</h2>
+    <p><strong>What they mean:</strong> We need a serious coding framework to build anything real.</p>
+    <p><strong>Why it's often overkill:</strong> LangChain adds a lot of abstraction and complexity. For most small business workflows you can get further faster with n8n or Make plus direct API calls. LangChain makes sense for Python-native teams doing complex multi-agent orchestration — not for a lead-capture workflow.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't just agree</span>
+        "Yeah, LangChain is the right framework."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "LangChain is powerful but adds real complexity — it's best when the team is Python-native and doing something like multi-agent orchestration. For this use case, can we scope it with n8n or Make first? We'll move faster, the client can maintain it, and we can always migrate if we outgrow it."
+      </div>
+    </div>
+
+    <h2>Trap 6: "AI will replace our employees"</h2>
+    <p><strong>What they mean:</strong> Either a fear or a sales pitch about headcount reduction.</p>
+    <p><strong>Why it's the wrong frame for small business:</strong> The real ROI story for small businesses is leverage — one person doing the work of three, or a three-person shop competing with an enterprise. Employee replacement is politically toxic and usually not the real value anyway.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't engage this frame</span>
+        "Yes, AI will replace X roles."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "The small business ROI story isn't replacement — it's leverage. A plumber who never misses a call because AI handles after-hours lead capture isn't replacing anyone. He's just competing with the big franchise down the street. That's the frame that actually sells."
+      </div>
+    </div>
+
+    <h2>Trap 7: "We need to build our own model"</h2>
+    <p><strong>What they mean:</strong> We need full control and custom capabilities.</p>
+    <p><strong>Why it's almost never right for small business:</strong> Training a foundation model costs millions and requires massive compute. Even large tech companies don't build their own — they fine-tune existing ones. The answer is almost always: use an existing model via API, customize with RAG and system prompts, and focus your energy on the application layer.</p>
+
+    <div class="example-pair">
+      <div class="example-block bad">
+        <span class="example-label">❌ Don't entertain this</span>
+        "Sure, we could build our own model."
+      </div>
+      <div class="example-block good">
+        <span class="example-label">✓ Your redirect</span>
+        "Building a foundation model is a multi-million dollar, multi-year project even for well-funded tech companies. The real opportunity is at the application layer — take an existing frontier model, customize it with our data and system prompts, and build the workflow around it. That's where the ROI is."
+      </div>
+    </div>
+
+    <div class="callout info">
+      <span class="callout-label">The pattern</span>
+      Every gotcha follows the same structure: someone proposes the expensive/complex solution when a simpler one works. Your job is to ask the question that reveals the simpler path. You're not showing off — you're saving the project.
+    </div>
+
+    <div class="deep-dive-links">
+      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
+      <a href="rag.html" class="deep-dive-link">RAG vs Fine-tuning</a>
+      <a href="agents.html" class="deep-dive-link">Agents vs Workflows</a>
+      <a href="tools-automation.html" class="deep-dive-link">n8n vs LangChain</a>
+    </div>
+
+    <div class="page-nav">
+      <a href="tier2-terms.html">
+        <span class="nav-label">← Previous</span>
+        <span class="nav-title">Tier 2 Terms</span>
+      </a>
+      <a href="tools-models.html">
+        <span class="nav-label">Next →</span>
+        <span class="nav-title">Foundation Models</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+<script src="../assets/sidebar.js"></script>
+<script>renderSidebar('gotchas');</script>
+</body>
+</html>

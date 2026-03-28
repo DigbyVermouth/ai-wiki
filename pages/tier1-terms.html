@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tier 1 Terms — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <div id="sidebar-mount"></div>
+  <main class="main">
+
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Vocabulary</div>
+      <span class="page-tag">Vocabulary · Tier 1</span>
+      <h1 class="page-title">Know these <em>cold.</em></h1>
+      <p class="page-subtitle">These 12 terms will come up Monday. Someone who hesitates on any of these will be spotted immediately. Commit them to memory this weekend.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">How to study this</span>
+      Read each definition. Then cover it and say it out loud in your own words. If you can explain it confidently in 2 sentences without looking, you own it.
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">LLM — Large Language Model</span>
+      <p>The engine underneath everything. A model trained on massive amounts of text that predicts what words come next. GPT-4, Claude, Gemini, Llama are all LLMs. When someone says "the model," this is what they mean. Key insight: LLMs don't "know" things — they generate plausible text based on patterns.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Prompt / Prompt Engineering</span>
+      <p>The instructions you give an LLM. Prompt engineering is the craft of writing those instructions precisely. In automation contexts, a prompt is often written once and runs thousands of times. The quality of your prompt is often the difference between a useless output and a brilliant one.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Context Window</span>
+      <p>How much text an LLM can "see" at once — its working memory. Claude's is huge (~200K tokens, roughly 150,000 words). GPT-4o is smaller. This matters when you need to feed in a full document, an entire conversation history, or a large dataset. Bigger context window = more you can work with at once.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Token</span>
+      <p>The unit LLMs work in. Not exactly words — more like word-chunks. "cat" = 1 token. "unbelievable" ≈ 3 tokens. You pay per token in API pricing, and context windows are measured in tokens. Rule of thumb: 1,000 tokens ≈ 750 words.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Agent</span>
+      <p>An LLM that doesn't just answer — it takes <em>actions</em>. It can browse the web, write and run code, send emails, query databases, and loop back to check its own work. This is the big shift happening now: AI going from answering to doing. Agents are autonomous; chatbots are not.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">MCP — Model Context Protocol</span>
+      <p>Anthropic's open standard for connecting AI agents to external tools. Think of it as a universal plug. Instead of custom code to connect Claude to your CRM or calendar, MCP provides a standard connector any AI can use. When you hear "connectors" in a meeting, this is usually what they mean.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">RAG — Retrieval-Augmented Generation</span>
+      <p>Giving an LLM access to your specific data at runtime without retraining it. The system retrieves relevant documents and includes them in the prompt. Example: a chatbot that answers questions about <em>your</em> product catalog by pulling from your database. This is how you give AI current, specific knowledge cheaply.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Fine-tuning</span>
+      <p>Actually retraining a model on your own data so it learns your style or domain. More powerful than RAG for specialized behavior, but expensive, slow, and goes stale as your data changes. The gotcha: most people who say they need fine-tuning actually need RAG. Know the difference and you'll save your company money.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Workflow vs. Agent</span>
+      <p>A workflow follows a fixed path (if X then Y — predictable, auditable). An agent decides its own path (flexible but harder to control). For production small business use, most real deployments are workflows with AI steps inside them — not fully autonomous agents. Pure agents are still being figured out.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Hallucination</span>
+      <p>When an LLM confidently states something false. Not a bug — it's a fundamental property of how these models work. The mitigation is grounding (RAG, verified data sources, human review). If someone in your meeting proposes using an LLM to answer factual questions with no grounding, name the hallucination risk — that's the signal you've actually built things.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">Grounding</span>
+      <p>Connecting an LLM's outputs to verified, real-world data. RAG is one form. Web search access is another. Giving it your actual database is another. Ungrounded LLMs hallucinate. Grounded ones are production-ready. Grounding is the difference between a demo and a product.</p>
+    </div>
+
+    <div class="term-block">
+      <span class="term-name">n8n / Make / Zapier</span>
+      <p>Automation platforms that let you wire apps together visually. Zapier is easiest (5,000+ integrations). Make is more powerful for complex logic. n8n is open-source and self-hostable — no per-task fees. You can drop an LLM call into any of these as a step. This is where AI meets small business automation in practice.</p>
+    </div>
+
+    <h2>Quick self-test</h2>
+    <p>Can you answer each of these without looking up?</p>
+    <div class="card">
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--muted);">
+        <div>"What's the difference between RAG and fine-tuning?" → <span style="color: var(--text);">You know this.</span></div>
+        <div>"We should just use an agent for that." → <span style="color: var(--text);">You can ask: what's the failure mode if it goes off-path?</span></div>
+        <div>"Our context window is too small." → <span style="color: var(--text);">You can ask: what model are we on, and have we tried Claude?</span></div>
+        <div>"The model keeps hallucinating." → <span style="color: var(--text);">You can ask: is it grounded to a data source?</span></div>
+        <div>"We built the connector with MCP." → <span style="color: var(--text);">You know what that means and why it matters.</span></div>
+      </div>
+    </div>
+
+    <div class="deep-dive-links">
+      <a href="tier2-terms.html" class="deep-dive-link">Tier 2 Terms</a>
+      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
+      <a href="rag.html" class="deep-dive-link">RAG deep dive</a>
+      <a href="agents.html" class="deep-dive-link">Agents deep dive</a>
+    </div>
+
+    <div class="page-nav">
+      <a href="the-stack.html">
+        <span class="nav-label">← Previous</span>
+        <span class="nav-title">The AI Stack</span>
+      </a>
+      <a href="tier2-terms.html">
+        <span class="nav-label">Next →</span>
+        <span class="nav-title">Tier 2: Drop Naturally</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+<script src="../assets/sidebar.js"></script>
+<script>renderSidebar('tier1');</script>
+</body>
+</html>

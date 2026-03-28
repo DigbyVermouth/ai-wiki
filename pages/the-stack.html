@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Stack — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <div id="sidebar-mount"></div>
+  <main class="main">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Core Concepts</div>
+      <span class="page-tag">Core Concept</span>
+      <h1 class="page-title">The <em>AI Stack.</em></h1>
+      <p class="page-subtitle">Every AI term you'll encounter lives somewhere on a five-layer stack. Once you have this mental model, nothing in a meeting will sound foreign — you'll always know where a concept belongs.</p>
+    </div>
+    <h2>Why the stack matters</h2>
+    <p>AI conversations break down when people mix layers — talking about models when they mean products, or talking about agents when they mean workflows. The stack gives you a shared map. When someone mentions a technology, your first instinct should be: <strong>what layer is that?</strong></p>
+    <h2>Layer by layer</h2>
+    <div class="term-block">
+      <span class="term-name">Layer 1 — Foundation Models (LLMs)</span>
+      <p>The raw engine. GPT-4o, Claude, Gemini, Llama. These are trained on massive text datasets and can generate, reason, summarize, and code. Nobody uses these directly in a product — they're always wrapped in layers above.</p>
+    </div>
+    <div class="term-block">
+      <span class="term-name">Layer 2 — AI Apps & Products</span>
+      <p>Consumer and business tools built on top of foundation models. ChatGPT, Claude.ai, Midjourney, Cursor, Perplexity. These make the models accessible with a UI, a persona, and specific use cases baked in.</p>
+    </div>
+    <div class="term-block">
+      <span class="term-name">Layer 3 — Tools & Connectors (MCPs)</span>
+      <p>The bridges that let AI reach out into the real world — your database, your calendar, your email, the web. Without this layer, AI can only respond in text. With it, AI can take actions. MCPs are the standard protocol for these connections.</p>
+    </div>
+    <div class="term-block">
+      <span class="term-name">Layer 4 — Agents & Workflows</span>
+      <p>The orchestration layer. Zapier, Make, n8n, and AI agents. This layer decides what happens when: if a call is missed → send SMS → qualify lead → push to CRM. Workflows are fixed paths. Agents decide their own path.</p>
+    </div>
+    <div class="term-block">
+      <span class="term-name">Layer 5 — Real-World Outcomes</span>
+      <p>What the business actually cares about. Saved hours. Captured leads. Revenue recovered. New products shipped. The stack exists to serve this layer — and the best AI work always traces from Layer 5 back down: start with the outcome you want, then figure out which layers you need.</p>
+    </div>
+    <div class="callout info">
+      <span class="callout-label">The key insight</span>
+      Most AI projects fail at Layer 5 — not because the technology didn't work, but because the team started at Layer 1 ("let's use an LLM") instead of Layer 5 ("we're losing $50K/year in missed calls"). Always start with the outcome.
+    </div>
+    <div class="deep-dive-links">
+      <a href="llm.html" class="deep-dive-link">Layer 1: LLMs deep dive</a>
+      <a href="mcp.html" class="deep-dive-link">Layer 3: MCPs & Connectors</a>
+      <a href="agents.html" class="deep-dive-link">Layer 4: Agents & Workflows</a>
+    </div>
+    <div class="page-nav">
+      <a href="../index.html"><span class="nav-label">← Previous</span><span class="nav-title">Home</span></a>
+      <a href="llm.html"><span class="nav-label">Next →</span><span class="nav-title">LLMs & Foundation Models</span></a>
+    </div>
+  </main>
+</div>
+<script src="../assets/sidebar.js"></script>
+<script>renderSidebar('stack');</script>
+</body>
+</html>

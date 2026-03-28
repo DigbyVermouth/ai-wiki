@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab: New Angle — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="layout">
+  <div id="sidebar-mount"></div>
+  <main class="main">
+
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="lab-overview.html">Lab</a><span>›</span>New Angle</div>
+      <span class="page-tag">Lab · Build & Pitch</span>
+      <h1 class="page-title">The new angle:<br><em>The AI front desk for professional services.</em></h1>
+      <p class="page-subtitle">Missed call text-back is proven for contractors. But there's a larger, underserved market one step up the value chain: lawyers, accountants, consultants, and financial advisors — where every missed call is worth $2,000–$20,000.</p>
+    </div>
+
+    <h2>Why the contractor model doesn't quite fit professional services</h2>
+
+    <p>The core missed-call problem is identical — actually worse, because professional service clients shop less on price and more on trust. If a lawyer doesn't respond quickly, the potential client assumes she's not interested or too busy. They move on and never come back.</p>
+
+    <p>But the contractor product doesn't translate directly because:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Different qualification questions</div>
+        <div class="card-body">A plumber needs to know: emergency or not, what's the issue, what's the location. A lawyer needs to know: what type of matter, jurisdiction, urgency, and critically — is there a conflict of interest with existing clients?</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Higher stakes conversations</div>
+        <div class="card-body">Someone calling a plumber about a burst pipe will engage with an SMS bot. Someone calling a divorce attorney about a sensitive personal matter may not want to text their situation to an unknown number.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Compliance concerns</div>
+        <div class="card-body">Attorneys have bar rules about client communications. Accountants have data privacy concerns. The product needs to be positioned carefully — as an intake tool, not a legal advisor.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Higher LTV justifies higher price</div>
+        <div class="card-body">A plumbing job is $500. A retained legal matter is $5,000–$50,000. A new tax client is worth $1,500/year ongoing. The product can charge 3–5× more and the ROI math still crushes it.</div>
+      </div>
+    </div>
+
+    <h2>The Product: "After-Hours Intake AI"</h2>
+
+    <p>Position it not as "missed call text-back" (sounds like a contractor tool) but as an <strong>after-hours client intake system</strong>. The difference is psychological — one sounds reactive, one sounds like a premium service offering.</p>
+
+    <p>The pitch to a solo attorney:</p>
+    <div class="card" style="background: rgba(200,255,0,0.05); border-color: rgba(200,255,0,0.2); margin-bottom: 2rem;">
+      <div style="font-style: italic; color: var(--text); font-size: 15px; line-height: 1.7;">"When someone calls your office at 7pm with a legal emergency, right now they get voicemail and call another attorney. With this system, they get a professional intake conversation that gathers their situation, confirms you handle that type of matter, and schedules a consultation — while telling them what to prepare. You wake up to a qualified, pre-screened consult request. No answering service, no paralegal overtime."</div>
+    </div>
+
+    <h2>Architecture: What you'd actually build</h2>
+
+    <div class="step-row">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title">Phone number provisioning</div>
+        <p style="font-size: 14px; color: var(--muted);">Use Twilio to provision a forwarding number. When the attorney's office phone goes unanswered after X rings, it forwards to the Twilio number. Twilio detects the call and triggers the workflow. This requires zero changes to the attorney's existing phone setup.</p>
+        <p style="font-size: 13px; color: var(--accent);">Tech: Twilio Voice · Cost: ~$1/phone number/month + $0.013/min</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <div class="step-title">Initial contact: voice or SMS?</div>
+        <p style="font-size: 14px; color: var(--muted);">For professional services, a brief voice message followed by SMS works better than pure SMS. "Hi, you've reached the after-hours intake line for Smith Law. We're capturing your information now — you'll receive a text in just a moment." Then immediately send an SMS. This sets expectations and reduces the feeling of being handed off to a bot.</p>
+        <p style="font-size: 13px; color: var(--accent);">Tech: Twilio Voice (voicemail) + Twilio SMS · 10DLC registration required</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <div class="step-title">AI intake conversation</div>
+        <p style="font-size: 14px; color: var(--muted);">This is where the LLM lives. The system prompt is the key product differentiator — it's trained on the firm's practice areas, standard intake questions, conflict check questions, and tone. The AI handles the back-and-forth SMS conversation, asking one clear question at a time, never more than 2–3 sentences per message.</p>
+        <div class="card" style="margin-top: 0.75rem; background: var(--bg3);">
+          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); margin-bottom: 0.5rem;">EXAMPLE SYSTEM PROMPT (excerpt)</div>
+          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text); line-height: 1.6;">You are the after-hours intake assistant for Smith &amp; Associates Law. You handle personal injury, family law, and estate planning matters in Utah. Your goal is to gather intake information professionally and warmly — never provide legal advice. Ask one question at a time. Gather: type of matter, brief description, urgency, full name, preferred contact time. If the matter involves [list of current clients] flag as potential conflict. End every conversation by confirming a consultation will be scheduled within 1 business day.</div>
+        </div>
+        <p style="font-size: 13px; color: var(--accent); margin-top: 0.75rem;">Tech: Claude API (claude-sonnet) · Cost: ~$0.003–0.015 per conversation</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <div class="step-title">Workflow orchestration</div>
+        <p style="font-size: 14px; color: var(--muted);">n8n or Make handles the orchestration: receive Twilio webhook → call Claude API with conversation history → send SMS via Twilio → loop until conversation complete → format intake summary → push to output channels.</p>
+        <p style="font-size: 13px; color: var(--accent);">Tech: n8n (self-hosted, free) or Make ($9–16/mo) · This is the nerve center</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <div class="step-title">Lead delivery &amp; scheduling</div>
+        <p style="font-size: 14px; color: var(--muted);">When the conversation concludes, the system: (1) emails the attorney a formatted intake summary, (2) sends a Slack/Teams notification with urgency flag, (3) optionally creates a Calendly booking link and texts it to the caller, (4) logs to CRM (Clio for legal, QuickBooks for accounting).</p>
+        <p style="font-size: 13px; color: var(--accent);">Tech: Email (SendGrid), Calendly API, Clio MCP connector · Cost: near-zero</p>
+      </div>
+    </div>
+
+    <h2>The Pitch Deck in 5 Slides</h2>
+    <p>If you were pitching this Monday as a product idea, here's the structure:</p>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; margin: 1.5rem 0;">
+      <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 24px; color: var(--accent); min-width: 40px;">01</div>
+        <div>
+          <div class="card-title">The problem (with numbers)</div>
+          <div class="card-body">Solo and small firm professionals miss 20–35% of inbound calls. Each missed call in professional services represents $2,000–$20,000 in lifetime client value. Current solutions: answering services ($800–1,500/month with human error), voicemail (85% hangup rate), or nothing.</div>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 24px; color: var(--accent); min-width: 40px;">02</div>
+        <div>
+          <div class="card-title">The solution (demo it)</div>
+          <div class="card-body">Show a real SMS conversation: caller → AI intake → formatted summary → attorney. The demo sells itself if the conversation feels natural and the output is genuinely useful.</div>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 24px; color: var(--accent); min-width: 40px;">03</div>
+        <div>
+          <div class="card-title">The ROI math</div>
+          <div class="card-body">If this captures 2 additional clients per month at average value of $3,000 each = $6,000/month in new revenue. Product costs $297/month. ROI: 20:1. You don't need to close them on the value — the math does it.</div>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 24px; color: var(--accent); min-width: 40px;">04</div>
+        <div>
+          <div class="card-title">Market size &amp; differentiation</div>
+          <div class="card-body">~1.3M solo/small firm attorneys in the US. ~600K small accounting firms. ~2M independent consultants. Existing contractor-focused tools don't serve this market. GoHighLevel is too generic and complex. There's a clear white space for professional-services-specific intake AI.</div>
+        </div>
+      </div>
+      <div class="card" style="display: flex; gap: 1rem; align-items: flex-start;">
+        <div style="font-family: 'DM Mono', monospace; font-size: 24px; color: var(--accent); min-width: 40px;">05</div>
+        <div>
+          <div class="card-title">Go-to-market &amp; what we need</div>
+          <div class="card-body">Launch with 10 beta law firms (free for 30 days). Collect testimonials and refine the intake flows. Then sell through bar association newsletters, LinkedIn, and referrals from legal tech consultants. Ask: what's the first step to get a beta pilot running?</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Your cost to build an MVP</h2>
+    <div class="roi-grid">
+      <div class="roi-card">
+        <span class="roi-number">~$50</span>
+        <span class="roi-label">Monthly infra cost for 10 beta customers (Twilio + Claude API + n8n cloud)</span>
+      </div>
+      <div class="roi-card">
+        <span class="roi-number">~20hrs</span>
+        <span class="roi-label">Estimated build time for a functional MVP with n8n + Twilio + Claude</span>
+      </div>
+      <div class="roi-card">
+        <span class="roi-number">$297/mo</span>
+        <span class="roi-label">Suggested pricing per firm (2 extra clients pays for it 20× over)</span>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <span class="callout-label">The real lesson</span>
+      Notice the AI (the LLM) is maybe 20% of this product. The real work is: understanding the customer's workflow, designing the conversation flow, handling the phone/SMS infrastructure, integrating with their existing tools, and building trust with a compliance-sensitive audience. AI is the ingredient — the product is everything around it.
+    </div>
+
+    <div class="deep-dive-links">
+      <a href="lab-architecture.html" class="deep-dive-link">Full architecture diagram</a>
+      <a href="lab-case-study.html" class="deep-dive-link">← Contractor case study</a>
+      <a href="tools-automation.html" class="deep-dive-link">n8n vs Make comparison</a>
+      <a href="prompting.html" class="deep-dive-link">Writing the system prompt</a>
+    </div>
+
+    <div class="page-nav">
+      <a href="lab-case-study.html">
+        <span class="nav-label">← Previous</span>
+        <span class="nav-title">Proven: Contractor case study</span>
+      </a>
+      <a href="lab-architecture.html">
+        <span class="nav-label">Next →</span>
+        <span class="nav-title">Architecture Walkthrough</span>
+      </a>
+    </div>
+
+  </main>
+</div>
+<script src="../assets/sidebar.js"></script>
+<script>renderSidebar('lab-build');</script>
+</body>
+</html>
