@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>llm — AI Field Guide</title>
+<title>LLMs — AI Field Guide</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -11,20 +11,59 @@
   <div id="sidebar-mount"></div>
   <main class="main">
     <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>llm</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Core Concepts</div>
+      <span class="page-tag">Core Concept · Layer 1</span>
+      <h1 class="page-title">LLMs &amp; Foundation<br><em>Models.</em></h1>
+      <p class="page-subtitle">The engine underneath everything. Understanding what LLMs actually are — and aren't — is the difference between sounding fluent and sounding like you memorized a glossary.</p>
     </div>
+
+    <h2>What an LLM actually is</h2>
+    <p>A Large Language Model is a mathematical system trained to predict what word (technically, what token) comes next in a sequence. That's it. The remarkable thing is that doing this at massive scale — billions of parameters, trillions of words of training data — produces a system that appears to reason, summarize, translate, code, and converse.</p>
+    <p>It doesn't "know" things the way you know things. It has learned statistical patterns about how language works, and those patterns encode an enormous amount of implicit knowledge about the world. When it tells you the capital of France, it isn't looking it up — it's reproducing a pattern it saw countless times in training.</p>
+
+    <div class="callout">
+      <span class="callout-label">The key mental model</span>
+      Think of an LLM as an incredibly well-read person who has absorbed everything ever written — but who has no memory between conversations, no ability to verify facts in real time, and no direct connection to the world outside of text. Powerful but bounded.
+    </div>
+
+    <h2>The major models — and how to tell them apart</h2>
+    <table class="compare-table">
+      <tr><th>Model</th><th>Made by</th><th>Best for</th><th>Key strength</th></tr>
+      <tr><td><strong>GPT-4o</strong></td><td>OpenAI</td><td>General use, widest integrations</td><td>Largest ecosystem, most third-party tools built for it</td></tr>
+      <tr><td><strong>Claude</strong></td><td>Anthropic</td><td>Long documents, complex instructions</td><td>Largest context window, follows nuanced instructions reliably</td></tr>
+      <tr><td><strong>Gemini</strong></td><td>Google</td><td>Google Workspace integration</td><td>Native Google Docs, Sheets, Gmail integration</td></tr>
+      <tr><td><strong>Llama 3</strong></td><td>Meta</td><td>Self-hosting, privacy, no API costs</td><td>Open source — run it yourself, no per-token fees</td></tr>
+      <tr><td><strong>Mistral</strong></td><td>Mistral AI</td><td>European data compliance, fast inference</td><td>Open source, efficient, strong for EU deployments</td></tr>
+    </table>
+
+    <h2>Key concepts to own</h2>
+    <div class="term-block"><span class="term-name">Context window</span><p>The model's working memory — how much text it can see at once. Claude: ~200K tokens (~150,000 words). GPT-4o: ~128K. Bigger = you can feed more documents, more history, more context in one call.</p></div>
+    <div class="term-block"><span class="term-name">Temperature</span><p>A 0–1 dial controlling randomness. 0 = deterministic and precise (data extraction). 1 = creative and varied (copywriting). Most production systems run 0.2–0.7.</p></div>
+    <div class="term-block"><span class="term-name">Inference vs. training</span><p>Training = building the model (millions of dollars, done by Anthropic/OpenAI). Inference = running the model to get a response (fractions of a cent per API call). You only ever pay for inference.</p></div>
+    <div class="term-block"><span class="term-name">Knowledge cutoff</span><p>The date training data ended. The model has no built-in knowledge after that date. Fix: RAG or web search access.</p></div>
+    <div class="term-block"><span class="term-name">Multimodal</span><p>Models that handle more than text. Claude and GPT-4o can read images. For small business: receipt scanning, product photo analysis, screenshot reading — all possible.</p></div>
+
+    <h2>What LLMs are bad at</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Real-time information</div><div class="card-body">Training data has a cutoff. Fix: connect to web search or live data via RAG.</div></div>
+      <div class="card"><div class="card-title">Precise arithmetic</div><div class="card-body">LLMs are not calculators — they can get math wrong confidently. Fix: use function calling to run actual code.</div></div>
+      <div class="card"><div class="card-title">Memory between sessions</div><div class="card-body">No memory by default. Everything it "knows" is in the current context window. Fix: store state externally and inject it.</div></div>
+      <div class="card"><div class="card-title">Verifying its own outputs</div><div class="card-body">It doesn't know when it's hallucinating. Fix: ground it to verified sources, add human review for high-stakes outputs.</div></div>
+    </div>
+
     <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
+      <span class="callout-label">Monday tip</span>
+      If someone proposes using an LLM for any of these without a mitigation — "How are we handling real-time data?" or "What's our verification step?" — you immediately sound like someone who's built in production.
     </div>
+
     <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
+      <a href="rag.html" class="deep-dive-link">RAG — fixing the knowledge problem</a>
+      <a href="agents.html" class="deep-dive-link">Agents — making LLMs take action</a>
+      <a href="prompting.html" class="deep-dive-link">Prompting — getting the best output</a>
+    </div>
+    <div class="page-nav">
+      <a href="the-stack.html"><span class="nav-label">← Previous</span><span class="nav-title">The AI Stack</span></a>
+      <a href="agents.html"><span class="nav-label">Next →</span><span class="nav-title">Agents & Workflows</span></a>
     </div>
   </main>
 </div>

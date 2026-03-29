@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tools-apps — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>tools-apps</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Apps by Category — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Tools Map</div>
+  <span class="page-tag">Tools · Apps</span>
+  <h1 class="page-title">AI Apps<br><em>by category.</em></h1>
+  <p class="page-subtitle">The consumer and business tools layer. These are the products built on top of foundation models — what most people mean when they say "AI tools."</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('tools-apps');</script>
-</body>
-</html>
+<h2>Writing & content</h2>
+<table class="compare-table">
+<tr><th>Tool</th><th>Best for</th><th>Key edge</th></tr>
+<tr><td><strong>Claude.ai</strong></td><td>Long-form writing, document analysis, complex reasoning</td><td>Best for nuanced instructions and long documents</td></tr>
+<tr><td><strong>ChatGPT</strong></td><td>General writing, quick tasks, DALL-E image generation</td><td>Widest public recognition, best plugin ecosystem</td></tr>
+<tr><td><strong>Jasper</strong></td><td>Marketing copy at scale, brand voice consistency</td><td>Built for marketing teams with brand controls</td></tr>
+<tr><td><strong>Copy.ai</strong></td><td>Short-form marketing copy, social media</td><td>Fast, template-driven, good for small businesses</td></tr>
+</table>
+<h2>Research & search</h2>
+<table class="compare-table">
+<tr><th>Tool</th><th>Best for</th><th>Key edge</th></tr>
+<tr><td><strong>Perplexity</strong></td><td>Research with citations, current events, fact-checking</td><td>Always cites sources — hallucination is visible</td></tr>
+<tr><td><strong>Claude + web search</strong></td><td>Deep research with reasoning and synthesis</td><td>Better reasoning on complex topics than Perplexity</td></tr>
+</table>
+<h2>Image generation</h2>
+<table class="compare-table">
+<tr><th>Tool</th><th>Best for</th><th>Key edge</th></tr>
+<tr><td><strong>Midjourney</strong></td><td>Highest quality artistic images, marketing visuals</td><td>Best aesthetic quality of any image AI</td></tr>
+<tr><td><strong>DALL-E 3</strong></td><td>Quick images inside ChatGPT, follows text prompts well</td><td>Most accessible — built into ChatGPT</td></tr>
+<tr><td><strong>Ideogram</strong></td><td>Images with accurate text in them</td><td>Only image AI that reliably renders readable text</td></tr>
+<tr><td><strong>Stable Diffusion</strong></td><td>Self-hosted, custom trained, fine-grained control</td><td>Open source, runs locally, no per-image cost</td></tr>
+</table>
+<h2>Voice & audio</h2>
+<table class="compare-table">
+<tr><th>Tool</th><th>Best for</th><th>Key edge</th></tr>
+<tr><td><strong>ElevenLabs</strong></td><td>Voice cloning, realistic TTS, audio content</td><td>Most realistic voices, wide language support</td></tr>
+<tr><td><strong>Otter.ai</strong></td><td>Meeting transcription, summaries, action items</td><td>Real-time transcription with speaker labels</td></tr>
+<tr><td><strong>Fireflies</strong></td><td>Meeting notes, CRM sync, searchable transcripts</td><td>Deep CRM integrations for sales teams</td></tr>
+</table>
+<h2>Coding</h2>
+<table class="compare-table">
+<tr><th>Tool</th><th>Best for</th><th>Key edge</th></tr>
+<tr><td><strong>Cursor</strong></td><td>AI-native code editor, full codebase context</td><td>Understands your entire project, not just the open file</td></tr>
+<tr><td><strong>GitHub Copilot</strong></td><td>Inline code suggestions inside any editor</td><td>Native GitHub integration, widest IDE support</td></tr>
+<tr><td><strong>Claude Code</strong></td><td>Agentic coding, terminal-based, complex multi-file tasks</td><td>Best for big refactors and autonomous coding tasks</td></tr>
+</table>
+<div class="deep-dive-links">
+  <a href="tools-models.html" class="deep-dive-link">Foundation Models</a>
+  <a href="tools-automation.html" class="deep-dive-link">Automation Platforms</a>
+  <a href="lab-case-study.html" class="deep-dive-link">Lab: tools in action</a>
+</div>
+<div class="page-nav">
+  <a href="tools-automation.html"><span class="nav-label">← Previous</span><span class="nav-title">Automation Platforms</span></a>
+  <a href="lab-overview.html"><span class="nav-label">Next →</span><span class="nav-title">Lab Overview</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('tools-apps');</script>
+</body></html>

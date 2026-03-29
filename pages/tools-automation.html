@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tools-automation — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>tools-automation</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation Platforms — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Tools Map</div>
+  <span class="page-tag">Tools · Automation</span>
+  <h1 class="page-title">Automation<br><em>Platforms.</em></h1>
+  <p class="page-subtitle">These are where AI meets small business operations. The platform you choose shapes everything — cost, flexibility, who can maintain it, and how fast you can build.</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('tools-automation');</script>
-</body>
-</html>
+<h2>The three main players</h2>
+<table class="compare-table">
+<tr><th>Platform</th><th>Best for</th><th>Technical level</th><th>Pricing model</th><th>AI support</th></tr>
+<tr><td><strong>Zapier</strong></td><td>Simple if/then workflows, non-technical teams, maximum app coverage</td><td>None required</td><td>Per task — gets expensive at volume</td><td>Built-in ChatGPT/Claude steps, easy to set up</td></tr>
+<tr><td><strong>Make</strong></td><td>Complex multi-step logic, visual builders, data transformation</td><td>Low-moderate</td><td>Per operation — more efficient than Zapier</td><td>Strong AI module support, visual flow</td></tr>
+<tr><td><strong>n8n</strong></td><td>Full control, developers, self-hosting, no per-task limits</td><td>Moderate (JSON, some code)</td><td>Free self-hosted / flat fee cloud</td><td>Best-in-class — direct API calls, any model</td></tr>
+</table>
+<h2>When to use each</h2>
+<div class="card-grid">
+  <div class="card"><div class="card-title">Use Zapier when...</div><div class="card-body">The client needs to maintain it themselves, the workflow is simple (trigger → 1–2 steps → output), and you need one of Zapier's 6,000+ pre-built integrations with no custom code.</div></div>
+  <div class="card"><div class="card-title">Use Make when...</div><div class="card-body">The workflow has complex branching, data needs transforming mid-flow, or you need to handle errors gracefully. The visual builder is excellent for showing clients what's happening.</div></div>
+  <div class="card"><div class="card-title">Use n8n when...</div><div class="card-body">Volume is high (per-task pricing would be punishing), the team is technical, you want full control over AI prompt logic, or the client wants to self-host for data privacy reasons.</div></div>
+</div>
+<h2>Also worth knowing</h2>
+<div class="term-block"><span class="term-name">LangChain</span><p>A Python framework for building RAG pipelines and agent chains in code. More flexible than the no-code tools but requires a developer. Best for teams that are already Python-native and need complex multi-agent orchestration. Often overkill — evaluate n8n first.</p></div>
+<div class="term-block"><span class="term-name">LlamaIndex</span><p>Similar to LangChain but specifically focused on data ingestion and RAG. Better than LangChain for "connect AI to a big pile of documents" use cases. Same caveat: code-first, developer required.</p></div>
+<div class="term-block"><span class="term-name">GoHighLevel</span><p>An all-in-one marketing platform that includes CRM, email, SMS, and missed call text-back. Popular with marketing agencies selling AI automation to local businesses. Not as flexible as n8n but much easier for non-technical clients.</p></div>
+<div class="deep-dive-links">
+  <a href="agents.html" class="deep-dive-link">Agents vs Workflows</a>
+  <a href="tools-models.html" class="deep-dive-link">Foundation Models</a>
+  <a href="lab-build.html" class="deep-dive-link">Lab: which platform we used</a>
+</div>
+<div class="page-nav">
+  <a href="tools-models.html"><span class="nav-label">← Previous</span><span class="nav-title">Foundation Models</span></a>
+  <a href="tools-apps.html"><span class="nav-label">Next →</span><span class="nav-title">AI Apps by Category</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('tools-automation');</script>
+</body></html>

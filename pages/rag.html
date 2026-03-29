@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>rag — AI Field Guide</title>
+<title>RAG & Grounding — AI Field Guide</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -11,20 +11,87 @@
   <div id="sidebar-mount"></div>
   <main class="main">
     <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>rag</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Core Concepts</div>
+      <span class="page-tag">Core Concept · Layer 3</span>
+      <h1 class="page-title">RAG &amp;<br><em>Grounding.</em></h1>
+      <p class="page-subtitle">The most practical technique for making AI useful in real businesses. If you only understand one architectural pattern deeply, make it this one.</p>
     </div>
+
+    <h2>The problem RAG solves</h2>
+    <p>An LLM trained in 2024 knows a lot — but it doesn't know <em>your</em> product catalog, <em>your</em> return policy, <em>your</em> client list, or anything that happened after its training cutoff. If you ask it about these things without providing them, it will hallucinate a plausible-sounding answer.</p>
+    <p>RAG — Retrieval-Augmented Generation — solves this by retrieving relevant information from your actual data and including it in the prompt at the moment of the question. The LLM then generates its response based on that real, specific, current information.</p>
+
+    <div class="callout">
+      <span class="callout-label">The analogy</span>
+      Imagine hiring a brilliant consultant who has read everything ever published — but knows nothing about your company specifically. RAG is like handing them the right pages from your operations manual right before they answer each question. They're still brilliant; now they're also accurate about your business.
+    </div>
+
+    <h2>How RAG works step by step</h2>
+    <div class="step-row">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title">Index your documents</div>
+        <p style="font-size:14px;color:var(--muted)">Your product docs, FAQs, policies, emails, past cases — anything the AI needs to know — are processed into embeddings (numerical representations) and stored in a vector database. This is a one-time setup that updates as your data changes.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <div class="step-title">User asks a question</div>
+        <p style="font-size:14px;color:var(--muted)">"What's your return policy for items over $200?" The question is also converted to an embedding.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <div class="step-title">Semantic search retrieves relevant chunks</div>
+        <p style="font-size:14px;color:var(--muted)">The vector database finds the document chunks that are semantically closest to the question — even if they use different words. Your return policy document gets retrieved.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <div class="step-title">Chunks are injected into the prompt</div>
+        <p style="font-size:14px;color:var(--muted)">"Here is the relevant policy information: [policy text]. Now answer the user's question using only this information." The LLM now has the real answer to work from.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <div class="step-title">LLM generates grounded response</div>
+        <p style="font-size:14px;color:var(--muted)">The response is based on your actual policy, not a guess. It can even cite the source. Hallucination risk drops dramatically.</p>
+      </div>
+    </div>
+
+    <h2>RAG vs fine-tuning — the decision you'll hear debated</h2>
+    <table class="compare-table">
+      <tr><th></th><th>RAG</th><th>Fine-tuning</th></tr>
+      <tr><td><strong>What it does</strong></td><td>Gives the model things to <em>know</em> at runtime</td><td>Changes how the model <em>behaves</em></td></tr>
+      <tr><td><strong>Setup time</strong></td><td>Days to weeks</td><td>Weeks to months</td></tr>
+      <tr><td><strong>Cost</strong></td><td>Low (vector DB + inference)</td><td>High (GPU compute for training)</td></tr>
+      <tr><td><strong>Stays current</strong></td><td>Yes — update the documents, done</td><td>No — requires retraining when data changes</td></tr>
+      <tr><td><strong>Right for</strong></td><td>Knowledge access: your products, policies, history</td><td>Behavior change: always respond in a specific style or format</td></tr>
+      <tr><td><strong>Small business verdict</strong></td><td>✓ Almost always the right choice</td><td>Rarely needed — usually overkill</td></tr>
+    </table>
+
+    <h2>What a vector database is (and why you care)</h2>
+    <p>A vector database stores embeddings — numerical representations of text where similar meaning = similar numbers = stored close together. When you search it, you're doing <strong>semantic search</strong>: finding content by meaning, not keywords. "Burst pipe emergency" finds your "24-hour plumbing emergency service" content even without exact word matches.</p>
+    <p>Common vector databases: <strong>Pinecone</strong> (managed, easy), <strong>Chroma</strong> (open source, great for starting), <strong>Weaviate</strong> (open source, more features). For most small business RAG systems, Chroma running locally or Pinecone's free tier is sufficient.</p>
+
     <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
+      <span class="callout-label">The Monday signal</span>
+      If someone says "the AI keeps giving wrong answers about our products" — the answer is almost always RAG, not fine-tuning, not a different model, not a better prompt. Ground it to your actual product data. That's the fix.
     </div>
+
     <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
+      <a href="llm.html" class="deep-dive-link">LLMs — why hallucination happens</a>
+      <a href="agents.html" class="deep-dive-link">Agents — RAG in action</a>
+      <a href="mcp.html" class="deep-dive-link">MCP — connecting to live data</a>
+      <a href="gotchas.html" class="deep-dive-link">Gotcha: fine-tune vs RAG</a>
+    </div>
+    <div class="page-nav">
+      <a href="mcp.html"><span class="nav-label">← Previous</span><span class="nav-title">MCP & Connectors</span></a>
+      <a href="prompting.html"><span class="nav-label">Next →</span><span class="nav-title">Prompting & System Prompts</span></a>
     </div>
   </main>
 </div>

@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>this-week — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>this-week</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This Week — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Study Plan</div>
+  <span class="page-tag">Study Plan · This Week</span>
+  <h1 class="page-title">After<br><em>Monday.</em></h1>
+  <p class="page-subtitle">Monday will reveal what direction matters most. This week's plan branches based on what you learn. Here's how to think about each path.</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('this-week');</script>
-</body>
-</html>
+<div class="callout">
+  <span class="callout-label">The branching principle</span>
+  Don't try to go deep on everything — you'll go shallow on all of it. Monday will surface 1–2 areas that are most relevant to your role. Go deep on those, stay at overview level on the rest.
+</div>
+<h2>If the meeting goes toward building products / apps</h2>
+<div class="card"><div class="card-title">Week focus: APIs, prompt engineering, cost modeling</div><div class="card-body" style="margin-top:0.5rem">
+  <p>Take Anthropic's free API course at anthropic.com/learn. Learn to make a direct API call with your own system prompt. Understand token pricing and how to estimate costs for a real product. Read: "Building with Claude" in Anthropic's docs.</p>
+  <p style="margin-top:0.5rem">Key skills: writing effective system prompts, handling conversation history in API calls, structured output (JSON mode), error handling.</p>
+</div></div>
+
+<h2>If the meeting goes toward automation & workflows</h2>
+<div class="card"><div class="card-title">Week focus: n8n hands-on, Twilio basics, CRM integrations</div><div class="card-body" style="margin-top:0.5rem">
+  <p>Set up a free n8n cloud account. Build one workflow: "when I fill out a Typeform, Claude summarizes it and emails it to me." This single build will teach you webhooks, API calls, and data passing — the three core skills of automation.</p>
+  <p style="margin-top:0.5rem">Then look up Twilio's free trial and make one SMS send work. Once you've sent a text programmatically, the whole contractor product architecture will click.</p>
+</div></div>
+
+<h2>If the meeting goes toward AI strategy</h2>
+<div class="card"><div class="card-title">Week focus: case studies, ROI frameworks, evaluations</div><div class="card-body" style="margin-top:0.5rem">
+  <p>Read McKinsey's State of AI report (free). Study 3–5 real small business AI case studies — search "AI for [industry] case study 2025." Learn how to build a simple ROI calculator for an AI product: time saved × hourly rate + revenue recovered − tool costs = monthly value.</p>
+  <p style="margin-top:0.5rem">Also worth learning: how "evals" work — how teams systematically test AI outputs for quality before shipping. This is the most mature teams' secret weapon.</p>
+</div></div>
+
+<h2>Regardless of direction — do these this week</h2>
+<div class="step-row"><div class="step-number">1</div><div class="step-content"><div class="step-title">Take Anthropic's AI Fluency course</div><p style="font-size:14px;color:var(--muted)">Free, online, takes 2–3 hours, earns a certificate. anthropic.com/learn — "AI Fluency: Framework and Foundations." Excellent complement to this guide.</p></div></div>
+<div class="step-row"><div class="step-number">2</div><div class="step-content"><div class="step-title">Explore Anthropic's prompt engineering tutorial</div><p style="font-size:14px;color:var(--muted)">github.com/anthropics/prompt-eng-interactive-tutorial — interactive, runs in Google Sheets. Goes from basic structure to advanced techniques. Hands-on is the fastest way to internalize prompting.</p></div></div>
+<div class="step-row"><div class="step-number">3</div><div class="step-content"><div class="step-title">Build one small thing</div><p style="font-size:14px;color:var(--muted)">Doesn't matter what. A workflow that solves a real problem you have. The act of building forces you to encounter real problems (authentication, error handling, formatting) that make every concept concrete.</p></div></div>
+<div class="step-row"><div class="step-number">4</div><div class="step-content"><div class="step-title">Update this wiki</div><p style="font-size:14px;color:var(--muted)">After Monday, you'll know what terms came up that aren't here. Add them. The best study resource is one you've personalized.</p></div></div>
+
+<div class="page-nav">
+  <a href="weekend.html"><span class="nav-label">← Previous</span><span class="nav-title">This Weekend</span></a>
+  <a href="../index.html"><span class="nav-label">↑ Back to</span><span class="nav-title">Home</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('this-week');</script>
+</body></html>

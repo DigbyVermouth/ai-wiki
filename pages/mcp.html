@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mcp — AI Field Guide</title>
+<title>MCP & Connectors — AI Field Guide</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -11,20 +11,52 @@
   <div id="sidebar-mount"></div>
   <main class="main">
     <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>mcp</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Core Concepts</div>
+      <span class="page-tag">Core Concept · Layer 3</span>
+      <h1 class="page-title">MCP &amp;<br><em>Connectors.</em></h1>
+      <p class="page-subtitle">The bridge between AI and the real world. Without this layer, an LLM can only talk. With it, an LLM can act.</p>
     </div>
+
+    <h2>What MCP is</h2>
+    <p>MCP stands for Model Context Protocol — an open standard created by Anthropic that lets AI models connect to external tools, data sources, and services in a standardized way. Think of it as USB for AI: instead of every tool needing a custom integration, any MCP-compatible tool can plug into any MCP-compatible AI.</p>
+    <p>Before MCP, connecting Claude to your calendar required custom code written specifically for that integration. With MCP, if Google Calendar publishes an MCP server, any AI that supports MCP can use it — with no custom code needed.</p>
+
+    <div class="callout">
+      <span class="callout-label">Why this is a big deal</span>
+      MCP is rapidly becoming an industry standard, not just an Anthropic thing. OpenAI, Google, and most major AI tooling companies are adopting it. When your meeting talks about "connectors," MCP is the infrastructure underneath — and knowing this puts you ahead of most people in the room.
+    </div>
+
+    <h2>What tools connect via MCP</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-title">Databases</div><div class="card-body">The AI can query your SQL database, CRM, or product catalog and return real answers based on real data — not guesses.</div></div>
+      <div class="card"><div class="card-title">Email & calendar</div><div class="card-body">The AI can read your emails, schedule meetings, send follow-ups — acting as a genuine executive assistant, not just a chat interface.</div></div>
+      <div class="card"><div class="card-title">Web search</div><div class="card-body">The AI can search the internet in real time, overcoming the knowledge cutoff problem for any question about current events.</div></div>
+      <div class="card"><div class="card-title">Business software</div><div class="card-body">Salesforce, Jobber, HubSpot, QuickBooks, Slack, Notion — the AI can read and write to the tools your business already runs on.</div></div>
+      <div class="card"><div class="card-title">File systems</div><div class="card-body">The AI can read documents, create files, update spreadsheets — treating your file storage as a working environment.</div></div>
+      <div class="card"><div class="card-title">Custom APIs</div><div class="card-body">Any service with an API can become an MCP tool. Your proprietary internal system, your booking platform, your inventory system.</div></div>
+    </div>
+
+    <h2>MCP vs function calling — what's the difference?</h2>
+    <p><strong>Function calling</strong> is the underlying mechanism: the LLM signals "I want to call this function with these parameters," and the application executes it and returns the result. It's been around since 2023.</p>
+    <p><strong>MCP</strong> is the standardization layer on top: a protocol that defines how tools are described, discovered, and called — so any AI can use any tool without custom integration work. Function calling is the engine; MCP is the universal adapter.</p>
+
+    <h2>How this works in the lab product</h2>
+    <p>In the contractor AI front desk we built in the lab, MCP is what connects the AI conversation to the contractor's job management software. When the AI finishes qualifying a lead, it doesn't just output text — it calls the Jobber MCP connector and creates an actual lead record. The contractor opens Jobber and the lead is already there, with all the information the AI collected.</p>
+    <p>Without MCP (or a custom API integration), the AI could only output a text summary that someone would have to copy-paste into Jobber manually. With MCP, the workflow is truly automated end to end.</p>
+
     <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
+      <span class="callout-label">The Monday signal</span>
+      If someone proposes an AI workflow that ends with "and then someone manually enters it into the system" — that's where you ask: "Do we have an MCP connector for that tool, or can we build one? That's the step that closes the loop."
     </div>
+
     <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
+      <a href="agents.html" class="deep-dive-link">Agents — what uses MCP</a>
+      <a href="rag.html" class="deep-dive-link">RAG — the other data connection method</a>
+      <a href="lab-build.html" class="deep-dive-link">Lab: MCP in the real product</a>
+    </div>
+    <div class="page-nav">
+      <a href="agents.html"><span class="nav-label">← Previous</span><span class="nav-title">Agents & Workflows</span></a>
+      <a href="rag.html"><span class="nav-label">Next →</span><span class="nav-title">RAG & Grounding</span></a>
     </div>
   </main>
 </div>

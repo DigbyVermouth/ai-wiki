@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lab-overview — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>lab-overview</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Overview — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Real-World Lab</div>
+  <span class="page-tag">Lab · Overview</span>
+  <h1 class="page-title">The Real-World<br><em>Lab.</em></h1>
+  <p class="page-subtitle">Reading about AI and building with AI are completely different experiences. This lab walks you through a real product — from problem to architecture to pitch — so Monday's meeting feels like review, not discovery.</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('lab-overview');</script>
-</body>
-</html>
+<h2>What the lab covers</h2>
+<div class="card-grid">
+  <div class="card"><div class="card-title">📋 Proven Case Study</div><div class="card-body">A deeply researched walkthrough of one of the most successfully marketed AI products for small businesses right now: AI missed call text-back for contractors. Real numbers, real architecture, real competitors.</div></div>
+  <div class="card"><div class="card-title">🔧 Build & Pitch</div><div class="card-body">Taking the proven product and identifying a better-fit, underserved market — professional services (lawyers, accountants). Full architecture, system prompt example, cost estimate, and a 5-slide pitch.</div></div>
+  <div class="card"><div class="card-title">🏗️ Architecture Walkthrough</div><div class="card-body">The actual technical stack: Twilio + Claude API + n8n + CRM integration. Every component explained, every cost estimated. You'll understand what's actually running under the hood.</div></div>
+</div>
+<h2>Why this approach</h2>
+<p>The fastest way to internalize AI terminology is to see it in context. When you've walked through a real system that uses RAG, function calling, system prompts, and n8n workflows — those terms stop being abstract and start being things you've seen working.</p>
+<p>By the end of the lab, you'll be able to say in Monday's meeting: "We'd need RAG for the knowledge base, a system prompt that handles conflict checking, and probably n8n to orchestrate the Twilio and CRM integrations." That sentence — spoken naturally — is what fluency sounds like.</p>
+<div class="callout info">
+  <span class="callout-label">Lab sequence</span>
+  Do the Case Study first (see how a proven product works), then Build & Pitch (apply the thinking to a new angle), then Architecture (go as deep as you want on the technical layer).
+</div>
+<div class="deep-dive-links">
+  <a href="lab-case-study.html" class="deep-dive-link">Start: Case Study →</a>
+  <a href="lab-build.html" class="deep-dive-link">Build & Pitch</a>
+  <a href="lab-architecture.html" class="deep-dive-link">Architecture Deep Dive</a>
+</div>
+<div class="page-nav">
+  <a href="tools-apps.html"><span class="nav-label">← Previous</span><span class="nav-title">AI Apps by Category</span></a>
+  <a href="lab-case-study.html"><span class="nav-label">Next →</span><span class="nav-title">Proven: AI for Contractors</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('lab-overview');</script>
+</body></html>

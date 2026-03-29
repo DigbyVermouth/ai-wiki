@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tier2-terms — AI Field Guide</title>
+<title>Tier 2 Terms — AI Field Guide</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -11,24 +11,37 @@
   <div id="sidebar-mount"></div>
   <main class="main">
     <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>tier2-terms</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Vocabulary</div>
+      <span class="page-tag">Vocabulary · Tier 2</span>
+      <h1 class="page-title">Drop these<br><em>naturally.</em></h1>
+      <p class="page-subtitle">These terms won't make or break Monday — but weaving them in naturally signals you've gone beyond the surface. They also set you up for the week ahead.</p>
     </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
+
+    <div class="term-block"><span class="term-name">Embeddings</span><p>Converting text into numbers (vectors) so that semantically similar text lands close together mathematically. "Best burger in town" and "top local restaurants" become nearby vectors. This is what powers semantic search and RAG. When someone says "vector search," embeddings are the mechanism.</p></div>
+    <div class="term-block"><span class="term-name">Vector database</span><p>A database optimized to store and search embeddings. Pinecone, Chroma, Weaviate. These are the storage layer of RAG systems. When someone says "we need a knowledge base for the AI," a vector DB is almost certainly part of the architecture.</p></div>
+    <div class="term-block"><span class="term-name">Function calling / Tool use</span><p>The mechanism by which an LLM triggers real code. The model says "I need to look up order #1234" and the system executes that query and returns the result. This is how agents do things rather than describe things. MCP is the standardized version of this.</p></div>
+    <div class="term-block"><span class="term-name">Pipeline</span><p>A sequence of AI steps where the output of one feeds the next. Extract text from PDF → summarize → classify intent → route to department. Most production AI systems are pipelines, not single model calls.</p></div>
+    <div class="term-block"><span class="term-name">Inference cost</span><p>The per-call cost of running an AI model. Claude Sonnet: ~$3 per million input tokens, ~$15 per million output tokens. At average business conversation lengths (~2,000 tokens), that's less than a penny per conversation. Cost only becomes a concern at very high volume or with very long context.</p></div>
+    <div class="term-block"><span class="term-name">Evals (evaluations)</span><p>Systematic testing of AI outputs for quality, accuracy, and consistency. How you know your prompt actually works before shipping it. Running 100 test cases and scoring the results. This is what separates production-grade AI from demo-grade AI — and almost nobody in small business does it yet.</p></div>
+    <div class="term-block"><span class="term-name">Latency</span><p>How long the AI takes to respond. For real-time customer-facing applications (live chat, voice), latency matters enormously — users notice anything over 2–3 seconds. For backend automation (nightly reports, batch processing), latency is irrelevant. Match the model to the use case.</p></div>
+    <div class="term-block"><span class="term-name">Structured output / JSON mode</span><p>Forcing an LLM to respond in a specific format (usually JSON) instead of free-form text. Essential for automation — when the AI's output needs to be parsed by another system, you need predictable structure. Most major models support this natively now.</p></div>
+    <div class="term-block"><span class="term-name">LangChain / LlamaIndex</span><p>Python frameworks for building RAG systems and agent pipelines in code. LangChain especially got very popular very fast — but also got a reputation for adding complexity without always adding value. Good for experienced Python teams. Usually overkill for small business automation vs. n8n or Make.</p></div>
+    <div class="term-block"><span class="term-name">Hugging Face</span><p>The GitHub of AI models — a massive repository of open-source models, datasets, and tools. Where you go to find and download open models. If someone says "we can grab a model from HuggingFace," they mean an open-source model they can run themselves.</p></div>
+    <div class="term-block"><span class="term-name">Reasoning models</span><p>A newer class of models (OpenAI's o1/o3, Claude's extended thinking mode) that "think" before responding — working through a problem step by step internally before outputting an answer. Much better at complex multi-step reasoning. Slower and more expensive than standard models. Right for hard problems, overkill for simple tasks.</p></div>
+    <div class="term-block"><span class="term-name">10DLC</span><p>10-Digit Long Code — the regulatory compliance framework for business SMS in the US. If you're building anything that sends texts to customers (like the missed call text-back product), you must register your number and use case with carriers. It's a real operational requirement that trips up many AI product builders.</p></div>
+
     <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
+      <a href="tier1-terms.html" class="deep-dive-link">← Tier 1 Terms</a>
       <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
+      <a href="rag.html" class="deep-dive-link">Embeddings & RAG deep dive</a>
+    </div>
+    <div class="page-nav">
+      <a href="tier1-terms.html"><span class="nav-label">← Previous</span><span class="nav-title">Tier 1 Terms</span></a>
+      <a href="gotchas.html"><span class="nav-label">Next →</span><span class="nav-title">The Gotcha Guide</span></a>
     </div>
   </main>
 </div>
 <script src="../assets/sidebar.js"></script>
-<script>renderSidebar('tier2-terms');</script>
+<script>renderSidebar('tier2');</script>
 </body>
 </html>

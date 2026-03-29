@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>prompting — AI Field Guide</title>
+<title>Prompting & System Prompts — AI Field Guide</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -11,20 +11,57 @@
   <div id="sidebar-mount"></div>
   <main class="main">
     <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>prompting</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Core Concepts</div>
+      <span class="page-tag">Core Concept · Practical Skill</span>
+      <h1 class="page-title">Prompting &amp;<br><em>System Prompts.</em></h1>
+      <p class="page-subtitle">The most immediately useful skill in AI. A great prompt is the difference between a confused intern and a brilliant consultant — using the exact same model.</p>
     </div>
+
+    <h2>The anatomy of a prompt</h2>
+    <p>Every interaction with an LLM has up to three parts: the <strong>system prompt</strong> (persistent background instructions, set by the developer, invisible to the user), the <strong>conversation history</strong> (the back-and-forth so far), and the <strong>user message</strong> (what the user just typed). The LLM sees all three simultaneously and generates its response from the combined context.</p>
+
+    <h2>System prompts: where products are built</h2>
+    <p>The system prompt is where a raw LLM becomes a specific product. It defines the persona, the rules, the knowledge, and the output format. For small business AI, the system prompt is your most important engineering artifact — not the model choice, not the infrastructure.</p>
+
+    <div class="card" style="background:rgba(200,255,0,0.05);border-color:rgba(200,255,0,0.2);margin-bottom:1.5rem;">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:0.75rem;letter-spacing:0.08em;">EXAMPLE SYSTEM PROMPT — AI INTAKE FOR LAW FIRM</div>
+      <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--text);line-height:1.7;">You are the after-hours intake assistant for Smith &amp; Associates Law in Salt Lake City. You handle personal injury, family law, and estate planning matters in Utah.<br><br>Your goal: gather intake information warmly and professionally. Never provide legal advice. Ask one question at a time. Gather: type of matter, brief description, urgency level, full name, best contact time.<br><br>If the caller mentions any of these existing client names [list], flag as potential conflict and do not continue intake — say a team member will call them directly.<br><br>End every conversation by confirming: "We'll have someone reach out within one business day. Is there anything else you need right now?"<br><br>Tone: warm, professional, reassuring. Sentences under 30 words. Never use legal jargon.</div>
+    </div>
+
+    <p>Notice what this does: it defines role, scope, rules, process, conflict handling, closing behavior, and tone — all before the user types a single word. That's a product, not a chat session.</p>
+
+    <h2>The Anthropic "4 Ds" framework (from their official cheat sheet)</h2>
+    <p>Anthropic released a free AI Fluency cheat sheet built around four competencies. These map directly to how you write great prompts:</p>
+
+    <div class="term-block"><span class="term-name">Delegation — what should AI do vs. humans?</span><p>Before prompting, decide: is this task appropriate for AI? What's the failure mode if it gets it wrong? Who reviews the output? Prompts for high-stakes outputs need explicit human review steps built in.</p></div>
+    <div class="term-block"><span class="term-name">Description — tell it exactly what you want</span><p>Specify the output format, the audience, the length, the tone. "Write a follow-up email" is weak. "Write a 3-sentence follow-up email to a plumbing customer who requested an estimate last week, warm and professional, ending with a specific call to action" is strong.</p></div>
+    <div class="term-block"><span class="term-name">Discernment — evaluate what it produces</span><p>Don't accept first outputs for anything important. Read critically. Ask: is this accurate? Is it appropriate? Did it follow all the instructions? The best AI users iterate — they treat the first output as a draft, not a deliverable.</p></div>
+    <div class="term-block"><span class="term-name">Diligence — use it responsibly</span><p>Be transparent about AI involvement when it matters. Verify factual claims. Take responsibility for AI-assisted work you put your name on. Don't let AI output go out the door unchecked.</p></div>
+
+    <h2>Practical prompting techniques</h2>
+    <table class="compare-table">
+      <tr><th>Technique</th><th>What it does</th><th>When to use it</th></tr>
+      <tr><td><strong>Chain-of-thought</strong></td><td>"Think step by step before answering"</td><td>Complex reasoning, math, multi-part analysis</td></tr>
+      <tr><td><strong>Few-shot examples</strong></td><td>Show 2–3 examples of the desired output</td><td>When you have a specific format or style to match</td></tr>
+      <tr><td><strong>Role/persona</strong></td><td>"You are a senior accountant…"</td><td>When expertise framing improves output quality</td></tr>
+      <tr><td><strong>Output constraints</strong></td><td>"Respond in exactly 3 bullet points"</td><td>When you need consistent, parseable output for automation</td></tr>
+      <tr><td><strong>Negative constraints</strong></td><td>"Do not mention competitors. Never make promises about timelines."</td><td>Customer-facing outputs with compliance requirements</td></tr>
+      <tr><td><strong>Think-first</strong></td><td>"Before responding, list your assumptions"</td><td>When hidden assumptions could invalidate the answer</td></tr>
+    </table>
+
     <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
+      <span class="callout-label">The Anthropic resources</span>
+      Anthropic has published a free AI Fluency course and cheat sheet that goes deep on prompting. The cheat sheet PDF: <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--accent)">www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf</span> — and the full course is free at anthropic.com/learn.
     </div>
+
     <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
+      <a href="llm.html" class="deep-dive-link">LLMs — why prompts matter</a>
+      <a href="agents.html" class="deep-dive-link">Agents — system prompts at scale</a>
+      <a href="lab-build.html" class="deep-dive-link">Lab: real system prompt example</a>
+    </div>
+    <div class="page-nav">
+      <a href="rag.html"><span class="nav-label">← Previous</span><span class="nav-title">RAG & Grounding</span></a>
+      <a href="tier1-terms.html"><span class="nav-label">Next →</span><span class="nav-title">Tier 1 Terms</span></a>
     </div>
   </main>
 </div>

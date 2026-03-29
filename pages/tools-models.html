@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tools-models — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>tools-models</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundation Models — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Tools Map</div>
+  <span class="page-tag">Tools · Models</span>
+  <h1 class="page-title">Foundation<br><em>Models.</em></h1>
+  <p class="page-subtitle">The engines. Choosing the right model for the right task is a real skill — and the answer is never "just use ChatGPT for everything."</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('tools-models');</script>
-</body>
-</html>
+<h2>The main models and when to use them</h2>
+<table class="compare-table">
+<tr><th>Model</th><th>Provider</th><th>Context window</th><th>Best use cases</th><th>Pricing (approx)</th></tr>
+<tr><td><strong>GPT-4o</strong></td><td>OpenAI</td><td>128K tokens</td><td>General use, widest tool ecosystem, real-time voice</td><td>~$5/1M input tokens</td></tr>
+<tr><td><strong>Claude Sonnet 4</strong></td><td>Anthropic</td><td>200K tokens</td><td>Long documents, complex instructions, business automation</td><td>~$3/1M input tokens</td></tr>
+<tr><td><strong>Claude Opus 4</strong></td><td>Anthropic</td><td>200K tokens</td><td>Most complex reasoning tasks, highest quality outputs</td><td>~$15/1M input tokens</td></tr>
+<tr><td><strong>Gemini 2.0</strong></td><td>Google</td><td>1M tokens</td><td>Google Workspace integration, extremely long documents</td><td>Varies by tier</td></tr>
+<tr><td><strong>Llama 3.3</strong></td><td>Meta (open)</td><td>128K tokens</td><td>Self-hosting, data privacy, no API cost</td><td>Free (compute only)</td></tr>
+<tr><td><strong>Mistral Large</strong></td><td>Mistral (open)</td><td>128K tokens</td><td>EU deployments, open source, fast inference</td><td>~$2/1M input tokens</td></tr>
+</table>
+<h2>Which model for which small business task</h2>
+<div class="card-grid">
+  <div class="card"><div class="card-title">Customer chat / lead qualification</div><div class="card-body">Claude Sonnet or GPT-4o. Fast, cost-effective, follows system prompt instructions reliably. Don't use Opus — overkill and more expensive per conversation.</div></div>
+  <div class="card"><div class="card-title">Long document analysis</div><div class="card-body">Claude Sonnet or Opus. The 200K context window is the deciding factor — you can feed in entire contracts, financial reports, or case files in a single call.</div></div>
+  <div class="card"><div class="card-title">Image/receipt/photo analysis</div><div class="card-body">GPT-4o or Claude (both multimodal). Great for reading receipts, analyzing product photos, extracting data from scanned forms.</div></div>
+  <div class="card"><div class="card-title">Privacy-sensitive data</div><div class="card-body">Llama 3 or Mistral self-hosted. Data never leaves your server. Important for healthcare, legal, financial clients with strict data requirements.</div></div>
+</div>
+<div class="callout info">
+  <span class="callout-label">Architecture tip</span>
+  Build model-agnostic when you can. Abstract the model call behind a single function so you can swap GPT-4o for Claude or vice versa without rebuilding. Models improve rapidly — you want to upgrade without rewriting.
+</div>
+<div class="deep-dive-links">
+  <a href="llm.html" class="deep-dive-link">LLMs deep dive</a>
+  <a href="tools-automation.html" class="deep-dive-link">Automation platforms</a>
+</div>
+<div class="page-nav">
+  <a href="gotchas.html"><span class="nav-label">← Previous</span><span class="nav-title">The Gotcha Guide</span></a>
+  <a href="tools-automation.html"><span class="nav-label">Next →</span><span class="nav-title">Automation Platforms</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('tools-models');</script>
+</body></html>

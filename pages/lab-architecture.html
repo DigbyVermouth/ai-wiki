@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lab-architecture — AI Field Guide</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="layout">
-  <div id="sidebar-mount"></div>
-  <main class="main">
-    <div class="page-header">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>lab-architecture</div>
-      <span class="page-tag">Coming soon</span>
-      <h1 class="page-title">This page is <em>coming.</em></h1>
-      <p class="page-subtitle">This section is being expanded. For now, use the sidebar to navigate to completed sections.</p>
-    </div>
-    <div class="callout info">
-      <span class="callout-label">Navigation tip</span>
-      The most important pages to study this weekend are: Tier 1 Terms, The Gotcha Guide, and the Lab pages (Case Study + Build & Pitch). Start there.
-    </div>
-    <div class="deep-dive-links">
-      <a href="tier1-terms.html" class="deep-dive-link">Tier 1 Terms</a>
-      <a href="gotchas.html" class="deep-dive-link">The Gotcha Guide</a>
-      <a href="lab-case-study.html" class="deep-dive-link">Lab: Case Study</a>
-      <a href="lab-build.html" class="deep-dive-link">Lab: Build & Pitch</a>
-    </div>
-  </main>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture Walkthrough — AI Field Guide</title>
+<link rel="stylesheet" href="../assets/style.css"></head>
+<body><div class="layout"><div id="sidebar-mount"></div><main class="main">
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="lab-overview.html">Lab</a><span>›</span>Architecture</div>
+  <span class="page-tag">Lab · Architecture</span>
+  <h1 class="page-title">Under the<br><em>hood.</em></h1>
+  <p class="page-subtitle">The full technical stack for the AI intake product — every component, every cost, every decision. This is what it actually takes to build it.</p>
 </div>
-<script src="../assets/sidebar.js"></script>
-<script>renderSidebar('lab-architecture');</script>
-</body>
-</html>
+<h2>The full stack, component by component</h2>
+<div class="term-block"><span class="term-name">1. Twilio — phone & SMS layer (~$20–50/mo)</span><p>Provisions a business phone number. Handles call forwarding (when the main number is unanswered, calls route to Twilio). Detects missed calls and fires a webhook to n8n. Sends and receives SMS. Must be 10DLC registered for business texting — this is a real compliance step that takes 2–4 weeks to process. Don't skip it.</p></div>
+<div class="term-block"><span class="term-name">2. n8n — workflow orchestration (free self-hosted / $20/mo cloud)</span><p>The nerve center. Receives the Twilio webhook → extracts caller info → calls the Claude API → sends SMS back via Twilio → loops for each reply in the conversation → detects when the conversation is complete → triggers the output step. All visually built, no full application code required.</p></div>
+<div class="term-block"><span class="term-name">3. Claude API — the AI brain (~$0.003–0.015 per conversation)</span><p>Receives the conversation history and the system prompt on every message. Returns the next AI response. The system prompt is the product differentiation — it encodes the business's services, qualifying questions, tone, and rules. At average SMS conversation length (~1,500 tokens), cost per conversation is roughly half a cent.</p></div>
+<div class="term-block"><span class="term-name">4. CRM connector — the output layer (varies)</span><p>When the conversation ends, n8n formats the intake summary and pushes it to the business's job management software. Jobber, HousecallPro, and ServiceTitan all have APIs. Clio is the standard for legal. QuickBooks for accounting. This is where MCP connectors shine — a standardized interface instead of custom API code for each system.</p></div>
+<div class="term-block"><span class="term-name">5. Notification layer — alerting the owner (near-zero cost)</span><p>Simultaneously: sends formatted email summary (SendGrid, ~$0.001/email), sends Slack/Teams notification with urgency flag, optionally texts a Calendly booking link to the caller. All triggered by the same n8n workflow completion step.</p></div>
+<h2>Total monthly cost for 10 customers</h2>
+<div class="roi-grid">
+  <div class="roi-card"><span class="roi-number">$50</span><span class="roi-label">Twilio (10 numbers + SMS volume)</span></div>
+  <div class="roi-card"><span class="roi-number">$20</span><span class="roi-label">n8n cloud (flat, unlimited workflows)</span></div>
+  <div class="roi-card"><span class="roi-number">$15</span><span class="roi-label">Claude API (at average conversation volume)</span></div>
+</div>
+<p style="margin-top:1rem">Total infrastructure cost: ~$85/month to serve 10 customers paying $297/month = $2,970 revenue. Gross margin before your time: ~97%. The business model works.</p>
+<h2>The key architectural decisions</h2>
+<div class="card-grid">
+  <div class="card"><div class="card-title">Why n8n over Make or Zapier?</div><div class="card-body">Per-task pricing at Zapier would cost $0.05–0.10 per SMS sent. At 50 messages/day across 10 customers, that's $150–300/month just in Zapier costs. n8n's flat pricing makes unit economics work at scale.</div></div>
+  <div class="card"><div class="card-title">Why Claude over GPT-4o?</div><div class="card-body">Claude follows multi-constraint system prompts more reliably — critical when you're encoding business rules, compliance requirements, and conversation flow all in one prompt. Also: Anthropic's terms are clearer for commercial use cases.</div></div>
+  <div class="card"><div class="card-title">Why SMS over voice AI?</div><div class="card-body">Voice AI (like Sameday) is more impressive but more expensive and has higher fallout rates — people hang up on robot voices. SMS has 98% open rates and people are comfortable qualifying via text. Start with SMS, add voice as an upsell.</div></div>
+  <div class="card"><div class="card-title">Why not build it all custom?</div><div class="card-body">Custom code means custom maintenance. n8n + Twilio + Claude API gives you a maintainable, upgradeable system where each component can be swapped independently. If Claude releases a better model, you update one API call.</div></div>
+</div>
+<div class="deep-dive-links">
+  <a href="mcp.html" class="deep-dive-link">MCP — CRM connectors explained</a>
+  <a href="agents.html" class="deep-dive-link">Agents vs Workflows</a>
+  <a href="lab-build.html" class="deep-dive-link">← Build & Pitch</a>
+</div>
+<div class="page-nav">
+  <a href="lab-build.html"><span class="nav-label">← Previous</span><span class="nav-title">Build & Pitch</span></a>
+  <a href="weekend.html"><span class="nav-label">Next →</span><span class="nav-title">This Weekend</span></a>
+</div>
+</main></div>
+<script src="../assets/sidebar.js"></script><script>renderSidebar('lab-arch');</script>
+</body></html>
