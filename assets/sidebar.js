@@ -1,52 +1,56 @@
 function renderSidebar(activePage) {
+  const inSubfolder = window.location.pathname.includes('/pages/');
+  const root = inSubfolder ? '../' : '';
+  const pagesDir = inSubfolder ? '../pages/' : 'pages/';
+
   const pages = [
     {
       section: 'Start Here',
       links: [
-        { href: '../index.html', label: 'Home & Mental Model', id: 'index' },
-        { href: '../pages/the-stack.html', label: 'The AI Stack', id: 'stack' },
+        { href: root + 'index.html', label: 'Home & Mental Model', id: 'index' },
+        { href: pagesDir + 'the-stack.html', label: 'The AI Stack', id: 'stack' },
       ]
     },
     {
       section: 'Core Concepts',
       links: [
-        { href: '../pages/llm.html', label: 'LLMs & Foundation Models', id: 'llm' },
-        { href: '../pages/agents.html', label: 'Agents & Workflows', id: 'agents' },
-        { href: '../pages/mcp.html', label: 'MCP & Connectors', id: 'mcp' },
-        { href: '../pages/rag.html', label: 'RAG & Grounding', id: 'rag' },
-        { href: '../pages/prompting.html', label: 'Prompting & System Prompts', id: 'prompting' },
+        { href: pagesDir + 'llm.html', label: 'LLMs & Foundation Models', id: 'llm' },
+        { href: pagesDir + 'agents.html', label: 'Agents & Workflows', id: 'agents' },
+        { href: pagesDir + 'mcp.html', label: 'MCP & Connectors', id: 'mcp' },
+        { href: pagesDir + 'rag.html', label: 'RAG & Grounding', id: 'rag' },
+        { href: pagesDir + 'prompting.html', label: 'Prompting & System Prompts', id: 'prompting' },
       ]
     },
     {
       section: 'Vocabulary',
       links: [
-        { href: '../pages/tier1-terms.html', label: 'Tier 1: Must Know Cold', id: 'tier1' },
-        { href: '../pages/tier2-terms.html', label: 'Tier 2: Drop Naturally', id: 'tier2' },
-        { href: '../pages/gotchas.html', label: 'The Gotcha Guide', id: 'gotchas' },
+        { href: pagesDir + 'tier1-terms.html', label: 'Tier 1: Must Know Cold', id: 'tier1' },
+        { href: pagesDir + 'tier2-terms.html', label: 'Tier 2: Drop Naturally', id: 'tier2' },
+        { href: pagesDir + 'gotchas.html', label: 'The Gotcha Guide', id: 'gotchas' },
       ]
     },
     {
       section: 'Tools Map',
       links: [
-        { href: '../pages/tools-models.html', label: 'Foundation Models', id: 'tools-models' },
-        { href: '../pages/tools-automation.html', label: 'Automation Platforms', id: 'tools-automation' },
-        { href: '../pages/tools-apps.html', label: 'AI Apps by Category', id: 'tools-apps' },
+        { href: pagesDir + 'tools-models.html', label: 'Foundation Models', id: 'tools-models' },
+        { href: pagesDir + 'tools-automation.html', label: 'Automation Platforms', id: 'tools-automation' },
+        { href: pagesDir + 'tools-apps.html', label: 'AI Apps by Category', id: 'tools-apps' },
       ]
     },
     {
       section: 'Real-World Lab',
       links: [
-        { href: '../pages/lab-overview.html', label: 'Lab: Overview', id: 'lab-overview' },
-        { href: '../pages/lab-case-study.html', label: 'Proven: AI for Contractors', id: 'lab-case' },
-        { href: '../pages/lab-build.html', label: 'New Angle: Build & Pitch', id: 'lab-build' },
-        { href: '../pages/lab-architecture.html', label: 'Architecture Walkthrough', id: 'lab-arch' },
+        { href: pagesDir + 'lab-overview.html', label: 'Lab: Overview', id: 'lab-overview' },
+        { href: pagesDir + 'lab-case-study.html', label: 'Proven: AI for Contractors', id: 'lab-case' },
+        { href: pagesDir + 'lab-build.html', label: 'New Angle: Build & Pitch', id: 'lab-build' },
+        { href: pagesDir + 'lab-architecture.html', label: 'Architecture Walkthrough', id: 'lab-arch' },
       ]
     },
     {
       section: 'Study Plan',
       links: [
-        { href: '../pages/weekend.html', label: 'This Weekend', id: 'weekend' },
-        { href: '../pages/this-week.html', label: 'This Week', id: 'this-week' },
+        { href: pagesDir + 'weekend.html', label: 'This Weekend', id: 'weekend' },
+        { href: pagesDir + 'this-week.html', label: 'This Week', id: 'this-week' },
       ]
     }
   ];
